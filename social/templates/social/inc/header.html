@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  {% load staticfiles %}
+  <link rel="stylesheet" href="{% static 'social/css/style.css' %}">
+  <script src="https://kit.fontawesome.com/e89a4d83e9.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+  <title>{% block title %}Social{% endblock %} | Social</title>
+</head>
+
+<body>
+  <section class="cover">
+    <div class="container">
+      <nav>
+        <input type="checkbox" id="nav" class="hidden">
+        <label for="nav" class="nav-btn">
+          <i id="bar"></i>
+          <i id="bar"></i>
+          <i id="bar"></i>
+        </label>
+        <div class="nav-wrapper" id="nav__">
+          <ul>
+            <li><a href="" id="na">About us</a></li>
+            <li><a href="" id="na">Home</a></li>
+            <li><a href="" id="na">Sign In/Sign Up</a></li>
+            <li><a href="" id="na">Contact Us</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </section>
+  {% block body %}
+  {% endblock %}
+</body>
+
+</html>

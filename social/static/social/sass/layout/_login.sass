@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans')
+.form
+    position: relative
+    width: 450px
+    min-height: 500px
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    background: #fff
+    border-radius: 5px
+    overflow: hidden
+    box-shadow: 0 4px 16px rgba(0,0,0,.2)
+    border-radius: 10px
+    padding: 48px 40px 36px
+    margin-top: 25px
+    @media (max-width: 610px)
+        box-shadow: none
+    @media (max-width: 460px) 
+        width: 90%
+        padding: 10px
+
+.form1
+    position: relative
+    width: 450px
+    min-height: 500px
+    position: absolute
+    left: 50%
+    transform: translateX(-50%)
+    background: #fff
+    border-radius: 5px
+    overflow: hidden
+    box-shadow: 0 4px 16px rgba(0,0,0,.2)
+    border-radius: 10px
+    padding: 48px 40px 36px
+    margin-top: 25px
+    @media (max-width: 610px)
+        box-shadow: none
+    @media (max-width: 460px)
+        width: 90%
+        padding: 10px
+
+#area
+    color: #000
+    font-family: 'Open Sans', sans-serif
+    text-align: center
+
+.user
+    outline: none
+    border: none
+    display: block
+    margin: 0 auto
+    font-size: 18px
+    width: 100%
+    border-bottom: 1px solid #c0c0c0c0
+    padding-top: 30px
+    &::placeholder
+        opacity: 0.5
+        transition: all 0.3s
+
+.pass
+    outline: none
+    border: none
+    margin: 0 auto
+    font-size: 18px
+    width: 100%
+    border-bottom: 1px solid #c0c0c0c0
+    padding-top: 30px
+    transition: all 1.5s linear
+    &::placeholder
+        opacity: 0.5
+        transition: all 0.3s
+
+.new
+    transform: translateX(00px)
+
+.usernameplacing
+    &::placeholder
+        opacity: 1
+        transform: translateY(-30px)
+        color: #1a73e8
+        font-size: 12px
+
+.line
+    border: none
+    border-top: 1px solid #c0c0c0c0
+    transform: scale(0.5, 1)
+    transition: transform ease-in-out 200ms
+    margin-top: -1px
+
+
+.newline
+    border-top: 2px solid #1a73e8
+    transform: scale(1,1)
+    transition: transform ease-in-out 200ms
+
+
+.username
+    height: 100px
+    padding: 20px 0
+
+
+.next
+    float: right
+    background-color: #1a73e8
+    border: none
+    width: 88px
+    height: 36px
+    border-radius: 5px
+    color: #fff
+    font-weight: bold
+    cursor: pointer
+    @media (max-width: 290px)
+        display: block
+        margin: 0 auto
+        float: none
+
+.hidden
+    display: none
+
+.newpass
+    color: #1a73e8
+    text-decoration: none
+    @media (max-width: 290px)
+        padding-top: 30px
+        display: inline-block
+        margin: 0 auto
+
+
+#log
+    text-align: center
+    color: #000
+    font-family: 'Open Sans', sans-serif
+    font-weight: 400
+    font-size: 24px
+
+#new-details
+    font-size: 16px
+    font-family: 'Open Sans', sans-serif
+    line-height: 1.6
+    text-align: center
+    color: #000
+    font-weight: normal
+    font-family: 'Open Sans', sans-serif
+    @media (max-width: 330px)
+        line-height: 1.6
+
+.lining
+    padding-top: 50px
+    padding-right: 10px
+    padding-left: 10px
+    width: auto
+
+.email_status
+    float: right
+    margin-top: -20px
+
+.pass_status
+    float: right
+
+.previous
+    background-color: #f1f1f1
+    color: black
+
+.round
+    border-radius: 50%
+    text-decoration: none
+    display: inline-block
+    padding: 8px 16px
+    margin-left: -10px
+    transition: all ease-in 250ms
+    z-index: 99999
+    &:hover
+        background-color: #ddd
+        color: black
+    @media (max-width: 462px)
+        margin-left: 10px
+        margin-top: 10px
+
+.hide
+    visibility: hidden
+
+.centerit
+    @media (max-width: 290px)
+        text-align: center
+
+.final
+    float: right
+    background: #1a73e8
+    color: white
+    border: 2px solid #1a73e8
+    padding: .40em 1.5em
+    text-decoration: none
+    border-radius: 5px
+    font-weight: normal
+    font-size: 15px
+    font-family: 'Open Sans', sans-serif
+    cursor: pointer
+    margin-top: -18px
+    font-weight: 500
+    margin-right: 10px
+    display: block
+
+
+.grad 
+    background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet)
+    -webkit-background-clip: text
+    -webkit-text-fill-color: transparent
+    
+.new-acc
+    position: absolute
+    bottom: 20px
+    text-align: center
+    margin: 0 auto
+    width: 100%
+    transform: translateX(-40px)
+    color: black
+    &:hover
+        color: #7086ff !important

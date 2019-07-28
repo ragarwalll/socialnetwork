@@ -1,0 +1,188 @@
+{% extends 'social/inc/header.html' %} {% block body %}
+{% load filters %}
+{% load staticfiles %}
+<br /><br />
+<div class="load-bar" id="wait" style="position:fixed;z-index:9999999;">
+  <div class="bar"></div>
+  <div class="bar"></div>
+  <div class="bar"></div>
+</div>
+<br /><br />
+<div class="profile--wrapper">
+  <br>
+  <div style="text-align:center">
+
+    <div class="profile--post">
+
+      <div class="profile--post-wrapper">
+        <form action="{% url 'social:post' %}" method="post" enctype="multipart/form-data" class="post-form">
+          {% csrf_token %}
+          <textarea name="post" id="normal" rows="5" class="profile-post-textarea" placeholder="Write your post here!"
+            style="overflow: hidden; overflow-wrap: break-word; height: 95px;"></textarea>
+          <input type="image" src="{% static 'social/img/post.png' %}" name="send" width="30">
+          <br>
+          <label for="file-upload" class="post--photo">
+            <input type="file" id="file-upload" name="post-image" class="post--image">
+            <i class="fas fa-images"></i></i> Image/Video
+          </label>
+        </form>
+      </div>
+    </div><br>
+  </div>
+  {% for post in all_posts %}
+  <!--{% with user=post.added_by %}-->
+  {% load static %}
+  <br />
+  <div class="profile-newfeed">
+    <div class="profile--posted-by">
+      <img src="{% get_media_prefix %}{{ post.added_by.profile.userdata }}/dp.jpg" height="40"
+        style="border-radius: 50%" alt="" />
+      <a href="" target="_blank">{{ post.added_by.first_name | title }}
+        {{ post.added_by.last_name | title }}</a>
+      <span>{{ post.date }}</span>
+    </div>
+    <br /><br /><br />
+    <!--Body start-->
+    <div class="profile--body">
+      <p>{{ post.body }}</p>
+    </div>
+    <!--Body end-->
+    <div class="post-image">
+      <img src="{{ post.post_image.url }}" alt="" class="post-image-content" />
+    </div>
+    <div class="post--likes" style="display:inline; padding-right:0px;">{{ post.likes_set.count }}</div>
+    <div style="display:inline; padding-left:0px;" class="post--likes">
+      people likes this
+    </div>
+    <hr />
+    <div class="post--action">
+      <div class="post--like">
+        <form action="{% url 'social:like' post.id %}" method="post" name="like" class="post--like-unlike"
+          error="{{ post.id }}">
+          {% if post.likes_set|check:request.user %}
+          <input type="submit" value="Unlike" class="post-like-form">
+          {% else %}
+          <input type="submit" value="Like" class="post-like-form" />
+          {% endif %}
+
+
+        </form>
+      </div>
+      <div class="post--comment">Comment</div>
+    </div>
+    <hr />
+    <br />
+    <div class="profile--comments">
+      <div class="profile-post-comment">
+        <form action="{% url 'social:comment' post.id %}" method="POST" class="abc-comment">
+          <img src="{% get_media_prefix %}{{ request.user.profile.userdata }}/dp.jpg" height="25"
+            style="border-radius: 50%;transform: translateY(-12px);" alt="" />
+          <textarea name="data" id="normal" rows="1" class="text-comment" placeholder="Write your comment here!"
+            style="overflow: hidden; overflow-wrap: break-word; height: 50px;"></textarea>
+          <label for="comment_submit">
+            <input type="image" src="{% get_media_prefix %}img/post.png" name="send" width="25" />
+          </label>
+          <input type="submit" name="final_comment" class="comment_submit" />
+        </form>
+      </div>
+      {% for comments in post.comments_set.all %}
+
+      <div class="comment-all">
+        <div class="comment-all-body">
+          <img src="{% get_media_prefix %}{{ comments.posted_by.profile.userdata }}/dp.jpg" height="25"
+            style="border-radius: 50%;transform: translateY(5px);" alt="" />{{ comments.user }}
+          <a href="" target="_blank">
+            {{ comments.posted_by.first_name | title }}
+            {{ comments.posted_by.last_name | title }}
+          </a>
+          <span>{{ comments.comment }}</span>
+        </div>
+      </div><br>
+      {% endfor %}
+    </div>
+    <br />
+  </div>
+  <!--{% endwith %}-->
+  {% endfor %}
+</div>
+<script>
+  //loading-screen
+  $loading = $('#wait').hide()
+  $(document).ready(function () {
+    $(document).ajaxStart(function () {
+      $loading.show();
+    });
+    $(document).ajaxStop(function () {
+      $loading.hide();
+    });
+  });
+</script>
+<script type="text/javascript" src="{% static 'social/js/comments.js' %}"></script>
+<script>
+  var working = false;
+  $('.profile--wrapper').on('submit', '.post--like-unlike', function (e) {
+    e.preventDefault();
+    var token = '{{csrf_token}}';
+    if (working == false) {
+      working = true;
+      $.ajax({
+        headers: { "X-CSRFToken": token },
+        type: "POST",
+        cache: false,
+        url: $(this).attr('action'),
+        success: function (data) {
+        }
+      });
+      var str1 = $(this).html().replace(/\s/g, '');
+      var y = "<inputtype=\"submit\"value=\"Like\"class=\"post-like-form\">";
+      var n = "<inputtype=\"submit\"value=\"Unlike\"class=\"post-like-form\">";
+      if (str1 == n) {
+        $(this).html("<input type='submit' value='Like' class='post-like-form'>");
+        var likes = $(this).parent().parent().prev().prev().prev().html().replace(/\s/g, '');
+        likes = parseInt(likes, 10)
+        var likes = likes - 1;
+        $(this).parent().parent().prev().prev().prev().html(likes);
+      }
+      else {
+        $(this).html("<input type='submit' value='Unlike' class='post-like-form'>");
+        var likes = $(this).parent().parent().prev().prev().prev().html().replace(/\s/g, '');
+        likes = parseInt(likes, 10)
+        var likes = likes + 1;
+        $(this).parent().parent().prev().prev().prev().html(likes);
+      }
+      setTimeout(function () {
+        working = false;
+      }, 500)
+    }
+  }); 
+</script>
+
+
+<script>
+  var working1 = false;
+  $('.profile--wrapper').on('submit', '.abc-comment', function (e) {
+    e.preventDefault();
+    var token = '{{csrf_token}}';
+    var comment = $(this).find('.text-comment').val();
+    $(this).find('.text-comment').val("")
+    var append = $(this).parent().parent()
+    if (working1 == false) {
+      working1 = true;
+      $.ajax({
+        headers: { "X-CSRFToken": token },
+        type: "POST",
+        data: { data: comment },
+        url: $(this).attr('action'),
+        success: function (data) {
+          append.append(data)
+
+        }
+      });
+      setTimeout(function () {
+        working1 = false;
+      }, 500)
+    }
+  });
+</script>
+
+{% endblock %}

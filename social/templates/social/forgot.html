@@ -1,0 +1,35 @@
+{% extends 'social/inc/header.html' %} {% block body %}
+<style>
+  .errorlist {
+    text-align: center;
+    list-style: none;
+    color: red;
+  }
+</style>
+<div class="form new-form">
+  <a href="#" class="previous round hide">&#8249;</a>
+  <h3 id="area">Digital Literacy Programme</h3>
+  <h2 id="log">Forgot Password<br /></h2>
+  <h2 id="new-details">of your DLP account</h2>
+  <div class="input">
+    <div class="email">
+      <form action="" method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <div class="line user3"></div>
+        <span id="email_status" class="email_status"></span>
+        <input
+          type="submit"
+          name="login"
+          class="final"
+          style="float: right"
+          value="Send"
+        />
+      </form>
+    </div>
+    <!--Email-->
+  </div>
+  <!--Input-->
+</div>
+<!--Form-->
+{% endblock %}

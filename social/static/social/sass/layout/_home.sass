@@ -1,0 +1,177 @@
+
+.profile-newfeed
+  position: relative
+  background-color: #ffffff
+  border: 1px solid #F3F6F9
+  padding: 0.6em
+  transition: all ease-in-out 250ms
+  border-radius: 10px
+  font-family: "Roboto", sans-serif
+  &:hover
+    background-color: #F3F6F9
+    border: 1px solid #F3F6F9
+
+.profile--posted-by
+  font-weight: 700
+  float: left
+
+.profile--posted-by a
+  font-weight: 700
+  color: #048ca8
+  text-decoration: none
+  position: absolute
+  padding-left: 0.5em
+  padding-top: 0.3em  
+  &:hover
+    text-decoration: underline
+
+.profile--posted-by span
+  font-weight: 300
+  font-size: 0.8em
+  color: #000
+  padding-left: 0.7em
+
+.profile--body
+  padding: 5px
+  word-wrap: break-word
+  width: 100%
+  line-height: 1.6
+
+.post--likes
+  color: rgba(22, 219, 147, 1)
+  font-size: 0.8em
+  padding: 5px
+  padding-top: 0
+
+
+.post--like, .post--comment
+  width: 49%
+  display: inline-block
+  cursor: pointer
+  border-radius: 5px
+  padding: 10px
+
+.post--action
+  text-align: center
+  
+.post-like-form
+  border: 0
+  background-color: transparent
+  color: inherit
+  font-size: inherit
+
+.profile--comments
+  width: auto
+  height: auto
+  max-height: 0
+  overflow-y: scroll
+  animation: unreveal 1s ease-in-out
+@keyframes unreveal
+  0%
+    max-height: 200px
+    opacity: 1
+  50%
+    max-height: 0
+    opacity: 0
+
+
+.profile-post-comment
+  padding: 10px
+
+.text-comment
+  background-color: #dce5ee
+  resize: none
+  width: 75%
+  border-radius: 18px
+  text-decoration: none
+  border: 0
+  padding: 10px
+  animation: textarea-anime 1s ease-in-out
+  &:focus
+      outline: none
+
+.comment_submit
+  display: none
+
+.comment-all-body
+  display: inline-block
+  background: #F3F6F9
+  border: 7px solid #F3F6F9
+  border-top: 2px 
+  border-radius: 18px
+  position: relative
+  width: 90%
+
+.comment-all-body a
+  font-size: 15px
+  color: #048ca8
+  text-decoration: none
+  &:hover
+    text-decoration: underline
+
+
+.comment-all-body span
+  font-size: 14px
+
+.comment-all
+  padding-left: 20px
+
+.comment-all img
+  margin-right: 10px
+  //display: inline
+  
+
+.post-image-content
+  width: 100%
+
+.open
+  display: block
+  max-height: 200px
+  animation: reveal 1s ease-in-out
+
+@keyframes reveal
+  0%
+    max-height: 0px
+    opacity: 0
+  50%
+    max-height: 200px
+    opacity: 1
+
+
+.profile_each
+  width: 80%
+
+
+a
+  cursor: pointer
+
+.profile--wrapper
+  margin-left: auto
+  margin-right: auto
+  width: 800px
+  height: auto
+  border-left: 1px solid  #DCE5EE
+  border-right: 1px solid  #DCE5EE
+  padding-left: 10px
+  padding-right: 10px
+  @media (max-width: 800px)
+    width: auto
+
+.profile-post-textarea
+    resize: none
+    width: 50%
+    border-radius: 18px
+    text-decoration: none
+    border: 0
+    padding: 10px
+    &:focus
+        outline: none
+
+
+.post--image
+    display: none
+
+.post--photo
+    display: inline
+    padding: 6px 12px
+    cursor: pointer

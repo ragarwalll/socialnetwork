@@ -1,0 +1,41 @@
+//Fonts
+
+$font-stack:  "Roboto", sans-serif
+@font-face
+    font-family: elarte
+    src: url(../../font/elarte.ttf)
+
+//Font weight
+
+$font-light: 300
+$font-normal: 400
+$font-bold: 700
+$font-black: 900
+
+// Font-mixin
+
+=font($weight)
+  font-family: $font-stack
+  font-weight: $weight
+h1, h2, h3, h4, h5, h6, h6, p 
+  margin: 0 0 .75em
+
+
+h1:last-child, h2:last-child, h3:last-child,
+h4:last-child, h5:last-child, h6:last-child,
+p:last-child 
+  margin: 0
+
+
+h1 
+  font-size: 2rem
+  font-weight: 300
+  line-height: 1.15
+  text-transform: uppercase
+  letter-spacing: 3px
+
+
+h2 
+  font-size: 1.2rem
+  line-height: 1
+
